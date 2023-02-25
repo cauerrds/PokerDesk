@@ -1,43 +1,51 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Timer } from "./components/Timer/Timer";
+import { Config } from "./components/Confing/Config";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
+import { useSelector } from "react-redux";
+import { Fullpage, FullPageSections, FullpageSection } from "@ap.cx/react-fullpage";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+
+  const [secondsElapsed, SetSecondsElapsed] = useState(0)
+  const [minutesElapsed, SetMinutesElapsed] = useState(0)
+  const [status, setStatus] = useState('idle')
+  const [continueTournament, setContiueTournament] = useState(false)
+
+  const tournament = useSelector((state) => state.tournament)
+
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+        <Fullpage>
+            <FullPageSections>
+                <FullpageSection className="fullPage" >
+                    <Header title={"PokerDesk"}/>
+                    <Config
+                    setStatus={setStatus}
+                    status={status}
+                    SetMinutesElapsed={SetMinutesElapsed}
+                    SetSecondsElapsed={SetSecondsElapsed}
+                    />
+                    <Footer/>
+                </FullpageSection>
+                <FullpageSection className="fullPage" >
+                    <Header title={tournament.name}/>
+                    <Timer
+                      continueTournament={continueTournament}
+                      status={status}
+                      secondsElapsed={secondsElapsed}
+                      minutesElapsed={minutesElapsed}
+                      SetSecondsElapsed={SetSecondsElapsed}
+                      SetMinutesElapsed={SetMinutesElapsed}
+                      setStatus={setStatus}
+                      setContiueTournament={setContiueTournament}
+                    />
+                    <Footer/>
+                </FullpageSection>
+            </FullPageSections>     
+        </Fullpage>
     </div>
   );
 };
