@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { editLevel, setCurrentRound } from "../../features/tournament/tournamentSlice"
+import { addRow, editLevel, insertBreak, removeRow, setCurrentRound } from "../../features/tournament/tournamentSlice"
 import { Footer } from "../Footer/Footer"
 import { Container, Content, Table, TableContainer } from "./styles"
+import {RiCloseFill} from "react-icons/ri"
+import {HiPlusSm} from "react-icons/hi"
 
 const Config = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
     const tournament = useSelector((state) => state.tournament)
@@ -24,46 +26,67 @@ const Config = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
         }
     }
 
+    const handlePlusClick = (id)=>{
+        setStatus((status) => "idle")
+        dispatch(addRow(id))
+        setTimeout(()=>{
+            setStatus((status) => "running")
+        }, 100)
+    }
+
+    const handleRemoveClick = (id)=>{
+        setStatus((status) => "idle")
+        dispatch(removeRow(id))
+        setTimeout(()=>{
+            setStatus((status) => "running")
+        }, 100)
+    }
+
+    const handleSelectChange=(id)=>{
+        setStatus((status) => "idle")
+        dispatch(insertBreak(id))
+        setTimeout(()=>{
+            setStatus((status) => "running")
+        }, 100)
+    }
+
 
     const rederTableContent = (tournamentData)=>{
 
         const renderedData = tournamentData.map((level, i)=>{
             if(level.levelType == "blindLevel"){
                 return (
-                    <tr key={i}>
+                    <tr key={i} className="levelRow">
                         <td>
-                            <select id="levelType" name="levelType" defaultValue={level.levelType == "blindLevel" ? "blindLevel" : "break"} onBlur={(e)=>handleChange(e,i,"levelType")}>
-                                    <option value="blindLevel">{`Round ${i}`}</option>
-                                    <option value="break">Break</option>
+                            <select id="levelType" name="levelType" defaultValue={level.levelType == "blindLevel" ? "blindLevel" : "break"} onChange={(e)=>handleSelectChange(i)}>
+                                    <option value="blindLevel">{i}</option>
+                                    <option value="break">BRK</option>
                             </select>
                         </td>
                         <td><input type="number" onBlur={(e)=>handleChange(e,i,"duration")} placeholder={level.duration}/></td>
-                        <td><input type="number" onBlur={(e)=>handleChange(e,i,"smallBlind")} placeholder={level.smallBlind}/></td>
-                        <td><input type="number" onBlur={(e)=>handleChange(e,i,"bigBlind")} placeholder={level.bigBlind}/></td>
-                        <td><input type="number" onBlur={(e)=>handleChange(e,i,"ante")} placeholder={level.ante}/></td>
+                        <td><input type="number" onBlur={(e)=>handleChange(e,i,"smallBlind")} placeholder={(level.smallBlind>=1000)?((level.smallBlind/1000).toFixed(1) + "K"):(level.smallBlind.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."))}/></td>
+                        <td><input type="number" onBlur={(e)=>handleChange(e,i,"bigBlind")} placeholder={(level.bigBlind>=1000)?((level.bigBlind/1000) + "K"):(level.bigBlind.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."))}/></td>
+                        <td><input type="number" onBlur={(e)=>handleChange(e,i,"ante")} placeholder={(level.ante>=1000)?((level.ante/1000) + "K"):(level.ante.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."))}/></td>
+                        <td className="closedIcon"><HiPlusSm onClick={()=>handlePlusClick(i)}/></td>
+                        <td className="closedIcon"><RiCloseFill onClick={()=> handleRemoveClick(i)}/></td>
                     </tr>
                 )
             } else if(level.levelType == "break"){
                 return (
-                    <tr key={i}>
-                    <td>
-                        <select id="levelType" name="levelType" defaultValue={level.levelType == "blindLevel" ? "blindLevel" : "break"} onBlur={(e)=>handleChange(e,i,"levelType")}>
-                                <option value="blindLevel">Round</option>
-                                <option value="break">Break</option>
-                        </select>
-                    </td>
+                    <tr key={i} className="breakRow">
+                    <td><input disabled value="BRK" /></td>
                     <td><input type="number" onBlur={(e)=>handleChange(e,i,"duration")} placeholder={level.duration}/></td>
                     <td><input disabled type="number" onBlur={(e)=>handleChange(e,i,"smallBlind")} placeholder="-"/></td>
                     <td><input disabled type="number" onBlur={(e)=>handleChange(e,i,"bigBlind")} placeholder="-"/></td>
                     <td><input disabled type="number" onBlur={(e)=>handleChange(e,i,"ante")} placeholder="-"/></td>
+                    <td className="closedIcon"><HiPlusSm onClick={()=>handlePlusClick(i)}/></td>
+                    <td className="closedIcon"><RiCloseFill onClick={()=> handleRemoveClick(i)}/></td>
                 </tr>
                 )
             } else if(level.levelType == "countdown"){
                 return (
-                    <tr key={i}>
-                    <td>
-                        <input disabled value="Countdown" />
-                    </td>
+                <tr key={i} className="countdownRow">
+                    <td><input disabled value="CD" /></td>
                     <td><input onBlur={(e)=>handleChange(e,i,"duration")} placeholder={level.duration}/></td>
                     <td><input disabled onBlur={(e)=>handleChange(e,i,"smallBlind")} placeholder="-"/></td>
                     <td><input disabled onBlur={(e)=>handleChange(e,i,"bigBlind")} placeholder="-"/></td>
@@ -88,7 +111,7 @@ const Config = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
                         <tbody>
                             <tr>
                                 <th>Level</th>
-                                <th>Duration</th>
+                                <th>Minutes</th>
                                 <th>Small Blind</th>
                                 <th>Big Blind</th>
                                 <th>Ante</th>

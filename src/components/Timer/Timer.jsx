@@ -67,21 +67,15 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
 
     if(tournament.currentRound > 0){
       renderCountdown = (
+        
         <Blinds>
-        <div><span>{tournament.rounds[tournament.currentRound].smallBlind}</span>/<span>{tournament.rounds[tournament.currentRound].bigBlind}</span></div>
-        <div>Ante: {tournament.rounds[tournament.currentRound].ante}</div>
-        <div className="level">Round: {tournament.currentRound}</div>
-        <button onClick={()=>playTournament(tournament)}>Start</button>
-      </Blinds>
+          <div><span>{tournament.rounds[tournament.currentRound].smallBlind}</span>/<span>{tournament.rounds[tournament.currentRound].bigBlind}</span></div>
+          <div>Ante: {tournament.rounds[tournament.currentRound].ante}</div>
+          <div className="level">Round: {tournament.currentRound}</div>
+          <button onClick={()=>playTournament(tournament)}>Start</button>
+        </Blinds>
        )
     }
-
-
-    const speak = () => {
-      const thingToSay = 'Next blind';
-      Speech.speak(thingToSay);
-    };
-
 
     return(
         <Container className="ClockScreen">

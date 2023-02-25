@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Timer } from "./components/Timer/Timer";
 import { Config } from "./components/Confing/Config";
 import { Header } from "./components/Header/Header";
@@ -14,7 +14,6 @@ const App = () => {
   const [continueTournament, setContiueTournament] = useState(false)
 
   const tournament = useSelector((state) => state.tournament)
-
 
   return (
     <div className="App">

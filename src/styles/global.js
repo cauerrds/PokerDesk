@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
 :root{
-	position: relative;
 }
 
 .App{
@@ -11,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;	
+	
 
 }
 
@@ -28,6 +28,7 @@ body {
 	width: 100vw;
     margin: 0;
     
+
 	
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -73,7 +74,7 @@ q:before, q:after {
 
 
 
-    background: #343541;
+    background: #282C34;
     font-family: Opens-sans, Helvetica, Sans-Serif;
     font-size: 10px;
 	font-family: source-code-pro, Menlo, Monaco Consolas, "Courier New",

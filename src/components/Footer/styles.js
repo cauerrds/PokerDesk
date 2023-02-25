@@ -7,7 +7,7 @@ export const Container = styled.div`
     height: 10px;
     color: #fefefe;
     font-size: 10px;
-    margin-bottom: 1px;
+    margin-bottom: 10px;
     a{
     color: #fefefe;
         text-decoration: none;

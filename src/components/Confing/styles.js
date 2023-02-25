@@ -29,13 +29,25 @@ export const TableContainer = styled.div`
         justify-content: space-between;
         text-align: left;
 
-   
+        
     }
 
     tbody {
+        box-sizing: border-box;
         height: 200px;       /* Just for the demo          */
         overflow-y: auto;    /* Trigger vertical scroll    */
         overflow-x: hidden;  /* Hide the horizontal scroll */
+
+       ::-webkit-scrollbar{
+        width: 3px;
+        margin-right: -3px;
+       }
+
+   
+
+       ::-webkit-scrollbar-thumb{
+        background: #F45E44;
+       }
 
         @media (min-height: 400px){
             height: 270px;  
@@ -87,7 +99,6 @@ export const TableContainer = styled.div`
 
 export const Table = styled.table`
 
-    padding: 5px;
     border-radius: 8px;
     margin: auto;
     margin-top: 15px;
@@ -96,18 +107,64 @@ export const Table = styled.table`
 
     font-size: 0.8rem;
 
+    .levelRow{
+        .closedIcon{
+            :hover{
+                cursor: pointer;
+            }
+            svg{
+                color: #fefefe;
+            }
+        }
+        select, option{
+            color: #fefefe;
+        }
+        input, select{
+            background-color: #3698EC;
+            ::placeholder{
+            color: #fefefe;
+        }
+        }
+
+    }
+    .breakRow{   
+        input, select{
+            color: #fefefe;
+            background-color: #F45E44;
+            ::placeholder{
+                color: #fefefe;
+            }
+        }
+        .closedIcon{
+            :hover{
+                cursor: pointer;
+            }
+            height: 17px;
+            svg{                             
+                color: #fefefe;
+            }
+        }
+    }
+    .countdownRow{
+        input, select{
+            box-sizing: border-box;
+            margin-bottom: 4px;
+            color: #070707;
+            background-color: #E5E4E4;
+            ::placeholder{
+            color: #070707;
+
+        }
+        }
+    }
+
     
    
     input, select{
         width: 100%;
         box-sizing: border-box;
-        background-color: #fefefe;
         outline: none;
         border: none;
-
-        ::placeholder{
-            color: #070707;
-        }
     }
 
 
