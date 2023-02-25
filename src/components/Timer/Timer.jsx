@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentRound } from "../../features/tournament/tournamentSlice";
 import useInterval from "../../hooks/useInterval";
 import { Blinds, Clock, Container } from "./styles";
-import * as Speech from 'expo-speech';
 
 const Timer = ({status, setStatus, continueTournament, setContiueTournament, secondsElapsed, SetSecondsElapsed, minutesElapsed, SetMinutesElapsed})=>{
 
@@ -87,7 +86,6 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
     return(
         <Container className="ClockScreen">
           <Clock className="Clock">
-          <Button title="Press to hear some words" onPress={speak} />
           <div>{minutesElapsed < 10 ? `0${minutesElapsed}` : minutesElapsed}:{secondsElapsed < 10 ? `0${secondsElapsed}` : secondsElapsed}</div>
           </Clock>
           {/* <button onClick={()=>playTournament(tournament)}>Start</button>
