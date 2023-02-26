@@ -12,17 +12,22 @@ const BlindsTable = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=
 
 
     const handleChange = async (event, levelId, prop)=>{
-        const value = event.target.value    
+        let value = event.target.value 
+        if(prop == "smallBlind" || prop == "bigBlind"){
+            value = Math.floor(value / 100) * 100 + (value % 100 < 50 ? 0 : 100)
+        }
 
         dispatch(editLevel({levelId, prop, value}))
 
         if(tournament.currentRound == levelId){
-            setStatus((status) => "idle")
-            SetMinutesElapsed(value)
-            SetSecondsElapsed(0)
-            setTimeout(()=>{
-                setStatus((status) => "running")
-            }, 1000)
+            if(prop == "duration"){
+                setStatus((status) => "idle")
+                SetMinutesElapsed(value)
+                SetSecondsElapsed(0)
+                setTimeout(()=>{
+                    setStatus((status) => "running")
+                }, 1000)
+            }
         }
     }
 

@@ -4,13 +4,6 @@ import { createSlice } from '@reduxjs/toolkit';
 let initialState = {
     rounds: [
         {
-            levelType: "countdown",
-            duration: 5,
-            smallBlind: "",
-            bigBlind: "",
-            ante: "",
-        },
-        {
             levelType: "blindLevel",
             duration: 10,
             smallBlind: 100,

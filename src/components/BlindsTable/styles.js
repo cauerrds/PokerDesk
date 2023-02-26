@@ -120,6 +120,16 @@ export const Table = styled.table`
             color: #fefefe;
         }
         input, select{
+            color: #fefefe;
+            ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+            -moz-appearance: textfield;
+            :focus::placeholder {
+            color: transparent;
+            }
+
             background-color: #3698EC;
             ::placeholder{
             color: #fefefe;
@@ -129,6 +139,15 @@ export const Table = styled.table`
     }
     .breakRow{   
         input, select{
+            color: #fefefe;
+            ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+            -moz-appearance: textfield;
+            :focus::placeholder {
+            color: transparent;
+            }
             color: #fefefe;
             background-color: #F45E44;
             ::placeholder{
@@ -147,6 +166,16 @@ export const Table = styled.table`
     }
     .countdownRow{
         input, select{
+            color: #fefefe;
+            -moz-appearance: textfield;
+            ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+            :focus::placeholder {
+            color: transparent;
+            }
+
             box-sizing: border-box;
             margin-bottom: 4px;
             color: #070707;
