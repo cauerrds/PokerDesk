@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Timer } from "./components/Timer/Timer";
-import { Config } from "./components/Confing/Config";
+import { BlindsTable } from "./components/BlindsTable/BlindsTable";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { useSelector } from "react-redux";
-import { Fullpage, FullPageSections, FullpageSection } from "@ap.cx/react-fullpage";
+import { Lading } from "./components/Lading/Lading";
+import { Slider } from "./components/Sliders/Slider";
 
 const App = () => {
 
@@ -15,37 +16,64 @@ const App = () => {
 
   const tournament = useSelector((state) => state.tournament)
 
+
+
   return (
-    <div className="App">
-        <Fullpage>
-            <FullPageSections>
-                <FullpageSection className="fullPage" >
-                    <Header title={"PokerDesk"}/>
-                    <Config
-                    setStatus={setStatus}
-                    status={status}
-                    SetMinutesElapsed={SetMinutesElapsed}
-                    SetSecondsElapsed={SetSecondsElapsed}
-                    />
-                    <Footer/>
-                </FullpageSection>
-                <FullpageSection className="fullPage" >
-                    <Header title={tournament.name}/>
-                    <Timer
-                      continueTournament={continueTournament}
-                      status={status}
-                      secondsElapsed={secondsElapsed}
-                      minutesElapsed={minutesElapsed}
-                      SetSecondsElapsed={SetSecondsElapsed}
-                      SetMinutesElapsed={SetMinutesElapsed}
-                      setStatus={setStatus}
-                      setContiueTournament={setContiueTournament}
-                    />
-                    <Footer/>
-                </FullpageSection>
-            </FullPageSections>     
-        </Fullpage>
-    </div>
+
+      <Slider>
+            <Lading/> 
+          <div>
+            <Header title={"PokerDesk"}/>
+            <BlindsTable
+            setStatus={setStatus}
+            status={status}
+            SetMinutesElapsed={SetMinutesElapsed}
+            SetSecondsElapsed={SetSecondsElapsed}
+            />
+          </div>
+          <div>
+              <Header title={tournament.name}/>
+              <Timer
+               continueTournament={continueTournament}
+               status={status}
+               secondsElapsed={secondsElapsed}
+               minutesElapsed={minutesElapsed}
+               SetSecondsElapsed={SetSecondsElapsed}
+               SetMinutesElapsed={SetMinutesElapsed}
+               setStatus={setStatus}
+               setContiueTournament={setContiueTournament}
+              />
+          </div>     
+      </Slider>
+    
+
+    // <div className="App">
+
+    //               <Lading/>
+
+    //                 <Header title={"PokerDesk"}/>
+    //                 <BlindsTable
+    //                 setStatus={setStatus}
+    //                 status={status}
+    //                 SetMinutesElapsed={SetMinutesElapsed}
+    //                 SetSecondsElapsed={SetSecondsElapsed}
+    //                 />
+    //                 <Footer/>
+
+                    // <Header title={tournament.name}/>
+                    // <Timer
+                    //   continueTournament={continueTournament}
+                    //   status={status}
+                    //   secondsElapsed={secondsElapsed}
+                    //   minutesElapsed={minutesElapsed}
+                    //   SetSecondsElapsed={SetSecondsElapsed}
+                    //   SetMinutesElapsed={SetMinutesElapsed}
+                    //   setStatus={setStatus}
+                    //   setContiueTournament={setContiueTournament}
+                    // />
+                    // <Footer/>
+
+    // </div>
   );
 };
 

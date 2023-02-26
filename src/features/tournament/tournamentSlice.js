@@ -159,7 +159,8 @@ let initialState = {
         },
     ],
     currentRound: 0,
-    name: "Falecido Batel"
+    name: "Falecido Batel",
+    stack: 30000
 }
 
 
@@ -194,10 +195,14 @@ const tournamenteSlice = createSlice({
         insertBreak(state, action){
             const rowPosition = action.payload 
             state.rounds[rowPosition].levelType = "break"
+        },
+        addTournament(state, action){
+            state.rounds = action.payload.rounds
+            state.name = action.payload.name
         }
    },
 });
 
 
-export const {editLevel, setCurrentRound, addRow, removeRow, insertBreak} = tournamenteSlice.actions;
+export const {addTournament, editLevel, setCurrentRound, addRow, removeRow, insertBreak} = tournamenteSlice.actions;
 export default tournamenteSlice.reducer;

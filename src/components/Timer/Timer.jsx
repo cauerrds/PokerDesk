@@ -57,25 +57,10 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
       status === 'running' ? 1000 : null
     );
 
-    let renderCountdown = (
-      <div className="onCountdown">
-        <p>To Start</p>
-        <button onClick={()=>playTournament(tournament)}>Start</button>
-      </div>
- 
-    )
 
-    if(tournament.currentRound > 0){
-      renderCountdown = (
-        
-        <Blinds>
-          <div><span>{tournament.rounds[tournament.currentRound].smallBlind}</span>/<span>{tournament.rounds[tournament.currentRound].bigBlind}</span></div>
-          <div>Ante: {tournament.rounds[tournament.currentRound].ante}</div>
-          <div className="level">Round: {tournament.currentRound}</div>
-          <button onClick={()=>playTournament(tournament)}>Start</button>
-        </Blinds>
-       )
-    }
+
+
+
 
     return(
         <Container className="ClockScreen">
@@ -85,7 +70,12 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
           {/* <button onClick={()=>playTournament(tournament)}>Start</button>
           <button onClick={()=>setStatus((status) => "idle")}>Pause</button>
           <button onClick={()=>setStatus((status) => "running")}>unPause</button> */}
-          {renderCountdown}
+          <Blinds>
+            <div><span>{tournament.rounds[tournament.currentRound].smallBlind}</span>/<span>{tournament.rounds[tournament.currentRound].bigBlind}</span></div>
+            <div>Ante: {tournament.rounds[tournament.currentRound].ante}</div>
+            <div className="level">Round: {tournament.currentRound}</div>
+            <button onClick={()=>playTournament(tournament)}>Start</button>
+        </Blinds>
         </Container>
     )
 }

@@ -5,7 +5,7 @@ import { Container, Content, Table, TableContainer } from "./styles"
 import {RiCloseFill} from "react-icons/ri"
 import {HiPlusSm} from "react-icons/hi"
 
-const Config = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
+const BlindsTable = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
     const tournament = useSelector((state) => state.tournament)
 
     const dispatch = useDispatch()
@@ -83,24 +83,13 @@ const Config = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
                     <td className="closedIcon"><RiCloseFill onClick={()=> handleRemoveClick(i)}/></td>
                 </tr>
                 )
-            } else if(level.levelType == "countdown"){
-                return (
-                <tr key={i} className="countdownRow">
-                    <td><input disabled value="CD" /></td>
-                    <td><input onBlur={(e)=>handleChange(e,i,"duration")} placeholder={level.duration}/></td>
-                    <td><input disabled onBlur={(e)=>handleChange(e,i,"smallBlind")} placeholder="-"/></td>
-                    <td><input disabled onBlur={(e)=>handleChange(e,i,"bigBlind")} placeholder="-"/></td>
-                    <td><input disabled onBlur={(e)=>handleChange(e,i,"ante")} placeholder="-"/></td>
-                </tr>
-                )
             }
         })
 
         return renderedData
     }
 
-    return (
-
+    return (    
         <Container>
             <Content>
                 <TableContainer>
@@ -121,10 +110,9 @@ const Config = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=>{
                     </Table>
                 </TableContainer>    
             </Content>
-        <Footer/>
         </Container>
     )
 
 }
 
-export {Config}
+export {BlindsTable}
