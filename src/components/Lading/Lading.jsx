@@ -22,7 +22,7 @@ const Lading = ()=>{
 
     const handleExportClick=()=>{  
         const tournamentData = JSON.stringify(tournament);
-        const blob = new Blob([fileData], { type: "text/plain" });
+        const blob = new Blob([tournamentData], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.download = `${tournament.name}.json`;
@@ -40,7 +40,7 @@ const Lading = ()=>{
                         <MdOutlineFileUpload/> 
                         <h1>Upload Tournament</h1>
                     </FileInput>
-                    <FileOutput>
+                    <FileOutput onClick={handleExportClick}>
                         <MdOutlineFileDownload />
                         <h1>Download Tournament</h1>
                     </FileOutput>
