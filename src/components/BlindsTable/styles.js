@@ -15,6 +15,7 @@ export const Content = styled.div`
 
 export const TableContainer = styled.div`
     max-width: 100vw;
+    margin-top: 10px;
     box-sizing: border-box;
     h1{
         text-align: center;

@@ -22,12 +22,13 @@ import styled from "styled-components";
         }
 
         .slider-controls {
+        box-sizing: border-box;
         position: absolute;
-        bottom: 0;
+        ${props =>  props.bottom == 2 ? "bottom: 0;" : "top: 0;" }
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 2rem;
+        ${props =>  props.bottom == 2 ? "margin-bottom:2.2rem ;" : "margin-top: 2.2rem;" }
         width: 100%;
         }
 
@@ -35,6 +36,7 @@ import styled from "styled-components";
             background: transparent;
             border: none;
             color: #fefefe;
+            
         }   
 
         .active{

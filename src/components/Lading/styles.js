@@ -19,6 +19,7 @@ export const InputContainer = styled.div`
     gap: 1.5rem;
     width: 100%;
     margin: auto;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

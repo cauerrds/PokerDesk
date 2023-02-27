@@ -11,7 +11,7 @@ const Slider = ({ children })=>{
     };
 
     return (
-        <Container>
+        <Container bottom={activePage}>
           <div className="slider-pages" style={{ transform: `translateY(-${activePage * 100}%)` }}>
             {children.map((child, index) => (
               <div key={index} className="page">
@@ -20,7 +20,7 @@ const Slider = ({ children })=>{
             ))}
           </div>
           <div>
-          <div className="slider-controls">
+          <div className="slider-controls" >
             {Array.from({ length: numPages }, (_, i) => i).map((pageNum) => (
               <button key={pageNum} className={`slider-control ${pageNum === activePage ? 'active' : ''}`} onClick={() => handlePageChange(pageNum)}>
                 {(pageNum == 0)?("Home"):(pageNum == 1)?("Schedule"):("Tournament")}
