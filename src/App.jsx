@@ -21,7 +21,7 @@ const App = () => {
   return (
 
       <Slider>
-            <Lading/> 
+          <Lading/> 
           <div>
             <Header title={"PokerDesk"}/>
             <BlindsTable
@@ -46,34 +46,6 @@ const App = () => {
           </div>     
       </Slider>
     
-
-    // <div className="App">
-
-    //               <Lading/>
-
-    //                 <Header title={"PokerDesk"}/>
-    //                 <BlindsTable
-    //                 setStatus={setStatus}
-    //                 status={status}
-    //                 SetMinutesElapsed={SetMinutesElapsed}
-    //                 SetSecondsElapsed={SetSecondsElapsed}
-    //                 />
-    //                 <Footer/>
-
-                    // <Header title={tournament.name}/>
-                    // <Timer
-                    //   continueTournament={continueTournament}
-                    //   status={status}
-                    //   secondsElapsed={secondsElapsed}
-                    //   minutesElapsed={minutesElapsed}
-                    //   SetSecondsElapsed={SetSecondsElapsed}
-                    //   SetMinutesElapsed={SetMinutesElapsed}
-                    //   setStatus={setStatus}
-                    //   setContiueTournament={setContiueTournament}
-                    // />
-                    // <Footer/>
-
-    // </div>
   );
 };
 

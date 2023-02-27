@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setActivePage, setPages } from "../../features/Slider/sliderSlice";
 import { Container } from "./styles";
 
 
 const Slider = ({ children })=>{
-    const [activePage, setActivePage] = useState(0);
-    const numPages = children.length;
+    const { pages, activePage } = useSelector((state)=> state.slider)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+      dispatch(setPages(children.length))
+    },[pages])
+
   
-    const handlePageChange = (pageNum) => {
-      setActivePage(pageNum);
-    };
+  
 
     return (
         <Container bottom={activePage}>
@@ -18,15 +23,6 @@ const Slider = ({ children })=>{
                 {child}
               </div>
             ))}
-          </div>
-          <div>
-          <div className="slider-controls" >
-            {Array.from({ length: numPages }, (_, i) => i).map((pageNum) => (
-              <button key={pageNum} className={`slider-control ${pageNum === activePage ? 'active' : ''}`} onClick={() => handlePageChange(pageNum)}>
-                {(pageNum == 0)?("Home"):(pageNum == 1)?("Schedule"):("Tournament")}
-              </button>
-            ))}
-          </div>
           </div>
         </Container>
       );
