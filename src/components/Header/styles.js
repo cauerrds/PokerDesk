@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    width: 100%;
+    top: 0;
+    left: 0;
     height: 50px;
-    text-align: center; 
     font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 10px;
 
     h1{
@@ -29,4 +28,15 @@ export const SliderControls = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+`
+
+export const Content = styled.div`
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1190px;
+    align-items: center;
+    text-align: center; 
+
 `

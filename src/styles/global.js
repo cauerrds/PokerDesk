@@ -5,11 +5,12 @@ const GlobalStyle = createGlobalStyle`
 :root{
 }
 
-.App{
+.section{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 100%;	
+	width: 100%;
+	height: 100%;
 }
 
 

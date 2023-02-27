@@ -23,7 +23,7 @@ const App = () => {
       <Slider>
           <Lading/> 
           <div>
-            <Header title={"PokerDesk"}/>
+            <Header />
             <BlindsTable
             setStatus={setStatus}
             status={status}

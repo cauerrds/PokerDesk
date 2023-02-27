@@ -15,13 +15,16 @@ export const Container = styled.div`
         justify-content: center;
         align-items: center;
         width: 100%;
-        font-size: 3.2rem;
+    }
+
+    .title{      
+        width: 100%;
+        text-align: center;
     }
 `
 
 export const Clock = styled.div`
-    
-    font-size: 6.2rem;
+    text-align: center;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -30,18 +33,42 @@ export const Clock = styled.div`
     @media (min-width: 500px){
         
     }
+
+    .fit{
+        height: 20vh;
+        width: 100%;
+    }
+
 `
 
 
 export const Blinds = styled.div`  
-    font-size: 6em;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .level{
-        font-size: 40px;
+    .fitContainer{
+        width: 80%;
+        text-align: center;
     }
+
+    .round{
+        width: 60%;
+    }
+
+    svg{
+        height: 40px;
+        font-size: 20px;
+        color: red;
+        :hover{
+            cursor: pointer;
+            font-size: 40px;
+        }
+    }
+
+
+
 `
+

@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { setActivePage } from "../../features/Slider/sliderSlice";
-import { Container, SliderControls } from "./styles"
-import banner from "../../assets/banner.png"
+import { Container, Content, SliderControls } from "./styles"
 
-const Header = ({title})=>{
+const Header = ()=>{
     const { pages, activePage } = useSelector((state)=> state.slider)
     const dispatch = useDispatch()
     const handlePageChange = (pageNum) => {
@@ -11,6 +10,7 @@ const Header = ({title})=>{
       };
     return(
         <Container>
+          <Content>
               <h1><span className="FirstChat">P</span>oker<span>Desk</span></h1>
             <SliderControls>
             {Array.from({ length: pages }, (_, i) => i).map((pageNum) => (
@@ -19,6 +19,7 @@ const Header = ({title})=>{
               </button>
             ))}
             </SliderControls>
+          </Content>
         </Container>
     )
 }

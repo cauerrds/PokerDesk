@@ -32,7 +32,7 @@ const Lading = ()=>{
 
     return (
         <Container>
-            <Header title={"PokerDesk"}/>
+            <Header/>
             <Content>
                 <InputContainer>
                     <FileInput>

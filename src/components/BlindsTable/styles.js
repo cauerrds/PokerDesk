@@ -107,20 +107,30 @@ export const Table = styled.table`
     max-width: 100vw;
 
     font-size: 0.8rem;
+ 
 
     .levelRow{
+        .playIcon{
+            color: red;
+            font-size: 10px;
+        }
         .closedIcon{
             :hover{
                 cursor: pointer;
+                
             }
             svg{
                 color: #fefefe;
             }
+            .deleteIcon{
+                color: red;
+             }
         }
         select, option{
             color: #fefefe;
         }
         input, select{
+            text-align: center;
             color: #fefefe;
             ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -138,8 +148,13 @@ export const Table = styled.table`
         }
 
     }
-    .breakRow{   
+    .breakRow{  
+        .playIcon{
+            color: red;
+            font-size: 10px;
+        } 
         input, select{
+            text-align: center;
             color: #fefefe;
             ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -163,6 +178,10 @@ export const Table = styled.table`
             svg{                             
                 color: #fefefe;
             }
+            .deleteIcon{
+                color: red;
+            }
+
         }
     }
     .countdownRow{
