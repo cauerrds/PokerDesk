@@ -13,13 +13,11 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
     const tournament = useSelector((state) => state.tournament)
 
     const dispatch = useDispatch()
-    //const [currentRound, setCurrentRound] = useState(0)
     const isMounted = useRef(false)
 
     const startRound = (round)=>{   
       if(!round){
         setStatus((status) => "idle")
-        console.log("Fim de Torneio");
         return
       }
       const {levelType, duration, smallBlind, bigBlind, ante} = round
@@ -84,9 +82,6 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
               (`0${secondsElapsed}`) : (secondsElapsed)}
             </Textfit>
           </Clock>
-          {/* <button onClick={()=>playTournament(tournament)}>Start</button>
-          <button onClick={()=>setStatus((status) => "idle")}>Pause</button>
-          <button onClick={()=>setStatus((status) => "running")}>unPause</button> */}
           <Blinds >
             <div className="fitContainer">
             <Textfit  className="fit" mode="single"><span>{tournament.rounds[tournament.currentRound].smallBlind}</span>/<span>{tournament.rounds[tournament.currentRound].bigBlind}</span></Textfit>

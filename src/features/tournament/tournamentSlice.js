@@ -152,7 +152,7 @@ let initialState = {
         },
     ],
     currentRound: 0,
-    name: "Falecido Batel",
+    name: "Main event",
     stack: 30000
 }
 

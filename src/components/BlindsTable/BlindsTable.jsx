@@ -33,7 +33,6 @@ const BlindsTable = ({status, setStatus, SetMinutesElapsed, SetSecondsElapsed})=
 
     const setAsCurrentLClick=(levelId)=>{
         setStatus((status) => "idle")
-        console.log(levelId);
         dispatch(setCurrentRound(levelId))
         SetMinutesElapsed(tournament.rounds[levelId].duration)
         SetSecondsElapsed(0)
