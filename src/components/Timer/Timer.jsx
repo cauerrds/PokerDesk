@@ -90,7 +90,7 @@ const Timer = ({status, setStatus, continueTournament, setContiueTournament, sec
             <Textfit  className="fit" mode="single">Ante: {tournament.rounds[tournament.currentRound].ante}</Textfit>
             </div>
             <div className="fitContainer round">
-            <Textfit  className="fit level" mode="single">Round: {tournament.currentRound}</Textfit>
+            <Textfit  className="fit level" mode="single">Round: {tournament.currentRound + 1}</Textfit>
             </div>  
             {controls}
         </Blinds>
